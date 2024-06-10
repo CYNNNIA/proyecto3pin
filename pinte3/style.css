@@ -41,7 +41,6 @@ li {
   list-style: none;
 }
 
-/* HEADER STYLES */
 header {
   display: flex;
   height: 15vh;
@@ -100,7 +99,6 @@ header .profileimg {
   width: 40px;
 }
 
-/* FOOTER STYLES */
 footer {
   height: 15vh;
   display: flex;
@@ -108,14 +106,13 @@ footer {
   align-items: center;
 }
 
-/* GALLERY ITEM STYLES */
 .gallery-item {
   height: 100%;
   width: 100%;
   background-size: cover;
   border-radius: 1rem;
   overflow: hidden;
-  position: relative; /* Añadido para el overlay */
+  position: relative;
 }
 
 .gallery-item > div {
@@ -126,15 +123,15 @@ footer {
   flex-direction: column;
   justify-content: space-between;
   backdrop-filter: brightness(50%) blur(3px);
-  opacity: 0; /* Inicialmente oculto */
-  transition: opacity 0.3s ease; /* Transición suave */
-  position: absolute; /* Para el overlay */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  position: absolute;
   top: 0;
   left: 0;
 }
 
 .gallery-item:hover > div {
-  opacity: 1; /* Mostrar overlay al hacer hover */
+  opacity: 1;
   cursor: zoom-in;
 }
 
@@ -189,10 +186,12 @@ footer {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-  color: var(--primary); /* Añadido para consistencia */
+  color: var(--primary);
 }
 
-/* GALLERY STYLES */
+.gallery-item .full-link:hover {
+  color: var(--logo);
+}
 .gallery {
   padding: 0 1rem;
   display: grid;
