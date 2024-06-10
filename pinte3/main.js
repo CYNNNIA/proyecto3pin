@@ -1,3 +1,9 @@
+export default {
+  build: {
+    outDir: 'dist'
+  }
+}
+
 import './style.css'
 import { createApi } from 'unsplash-js'
 
