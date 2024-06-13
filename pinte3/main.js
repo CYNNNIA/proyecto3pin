@@ -1,9 +1,3 @@
-export default {
-  build: {
-    outDir: 'dist'
-  }
-}
-
 import './style.css'
 import { createApi } from 'unsplash-js'
 
@@ -14,7 +8,7 @@ const unsplash = createApi({
 // HEADER
 const headerTemplate = () => {
   return `
-  <h1>TF</h1>
+  <h1 id="logo">P</h1>
   <input type="text" placeholder="Search" id="searchinput"/>
   <button id="searchbtn"><img src="./assets/nube.png" alt="Search icon"/></button>
   <button id="darkmodebtn"><img src="./assets/luna.png" alt="Dark mode icon" id="darkmodeicon"></button>
@@ -41,6 +35,11 @@ const listeners = () => {
       document.querySelector('#darkmodeicon').src = './assets/dark.svg'
     }
   })
+
+  const logo = document.querySelector('#logo')
+  logo.addEventListener('click', async () => {
+    await resetToInitialState()
+  })
 }
 
 const printHeaderTemplate = () => {
@@ -53,7 +52,7 @@ printHeaderTemplate()
 // FOOTER
 const templateFooter = () => {
   return `
-    <h4>Copyright 2024 - Tattoo Finder - Bendita Webmaster - </h4>
+    <h4>Copyright 2024 - Pinterest - Bendita Webmaster - </h4>
   `
 }
 
@@ -113,15 +112,32 @@ const galleryListeners = async () => {
   const input = document.querySelector('#searchinput')
   const btn = document.querySelector('#searchbtn')
   btn.addEventListener('click', async () => {
-    const images = await searchPhotos(input.value)
-    printItems(images.response.results)
+    await handleSearch(input.value)
   })
+}
+
+const handleSearch = async (keyword) => {
+  const input = document.querySelector('#searchinput')
+  let images = await searchPhotos(keyword)
+  if (images.response.results.length === 0) {
+    images = await searchPhotos('cats')
+    alert(
+      'No se encontraron imágenes. Aquí tienes algunos gatos y te sugerimos usar otra frase o palabra para una búsqueda correcta.'
+    )
+  }
+  printItems(images.response.results)
+  input.value = ''
 }
 
 const printTemplate = async () => {
   document.querySelector('main').innerHTML = galleryTemplate()
   galleryListeners()
 
+  const images = await searchPhotos('tattoos')
+  printItems(images.response.results)
+}
+
+const resetToInitialState = async () => {
   const images = await searchPhotos('tattoos')
   printItems(images.response.results)
 }
