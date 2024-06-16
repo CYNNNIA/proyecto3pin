@@ -1,13 +1,15 @@
+/* Variables */
 :root {
   --color-background: #d6f7fb;
   --primary: #111111;
   --secondary: #fcfcfc;
   --logo: #f6a5f8;
   --transparent: rgba(187, 228, 248, 0.862);
-  --hover-bg: var(--secondary); /* Variable para hover background */
-  --hover-border: var(--primary); /* Variable para hover border */
+  --hover-bg: var(--secondary);
+  --hover-border: var(--primary);
 }
 
+/* General Styles */
 * {
   margin: 0;
   padding: 0;
@@ -41,13 +43,14 @@ li {
   list-style: none;
 }
 
+/* Header Styles */
 header {
   display: flex;
-  height: 15vh;
+  height: auto;
   justify-content: space-between;
   align-items: center;
-  padding: 0 2rem;
-  gap: 1.5rem;
+  padding: 0.5rem 2rem;
+  gap: 1rem;
 }
 
 header h1 {
@@ -77,7 +80,7 @@ header button {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--logo); /* Añadido para consistencia */
+  background-color: var(--logo);
 }
 
 header img {
@@ -99,13 +102,7 @@ header .profileimg {
   width: 40px;
 }
 
-footer {
-  height: 15vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
+/* Gallery Styles */
 .gallery-item {
   height: 100%;
   width: 100%;
@@ -192,6 +189,7 @@ footer {
 .gallery-item .full-link:hover {
   color: var(--logo);
 }
+
 .gallery {
   padding: 0 1rem;
   display: grid;
@@ -208,6 +206,7 @@ footer {
   grid-row: span 2;
 }
 
+/* Media Queries */
 @media screen and (min-width: 576px) {
   .gallery {
     grid-template-columns: repeat(1, 1fr);
@@ -229,5 +228,38 @@ footer {
 @media screen and (min-width: 1200px) {
   .gallery {
     grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  header {
+    padding: 0.5rem 1rem;
+    gap: 0.5rem;
+  }
+
+  header h1 {
+    width: 30px;
+    height: 30px;
+    font-size: 1.2rem;
+  }
+
+  header input {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  header button {
+    height: 30px;
+    width: 30px;
+  }
+
+  header img {
+    height: 24px;
+    width: 24px;
+  }
+
+  header .profileimg {
+    height: 30px;
+    width: 30px;
   }
 }
